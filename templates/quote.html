@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="quote">
+<div class="button">
+    <button onclick="myFunction()" class="image">Click to get Company Wikipedia Link(For Teammates Service)</button>
+</div>
+
+
+<div id="myDIV" style="display:none" class="image">
+    <img src="/static/applelogo.png" style="width:50px;height:60px;">
+
+</div>
+
+<div id='chart' class='chart'”></div>
+</div>
+<script>
+    function myFunction() {
+    var x = document.getElementById("myDIV");
+
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

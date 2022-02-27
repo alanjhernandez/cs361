@@ -1,0 +1,74 @@
+div.image{
+  width: 800px;
+  margin: 0 auto;
+  background-color: aliceblue;
+  text-align: center;
+}
+div.button{
+  width: 800px;
+  margin: 0 auto;
+  background-color: aliceblue;
+  text-align: center;
+  
+}
+body {
+    margin: 0px;
+    font-family: sans-serif;
+    background-image: url(../stockbg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    color: floralwhite;
+}
+ul.data {
+    
+  width: 800px;
+    margin: 0 auto;
+}
+
+ul.horizontal {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*
+    background-color: rgba(51, 51, 51, 0.267);
+    */
+    background-color: floralwhite;
+  }
+  
+  li {
+    float: left;
+    display: inline;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+
+  li a:hover {
+    background-color: rgba(17, 17, 17, 0.24);
+  }
+
+div.intro{
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div.data{
+  width: 800px;
+  margin: 0 auto;
+}
+div.quote{
+  background-color: aliceblue;
+}
+p{
+  text-align: center;
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="intro">
+<h1>Stock Tracker: Search and compare prices</h1>
+<p>Welcome. Enter a company's ticker symbol to view their stock information.</p>
+
+
+<form method="post" action="{{url_for('index')}}">
+    <input type="search" name="stock_search" placeholder="e.g. AAPL">
+    <input type="submit">
+</form>
+
+
+</div>
+
+{% endblock %}

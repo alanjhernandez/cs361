@@ -3,6 +3,7 @@ div.image{
   margin: 0 auto;
   background-color: aliceblue;
   text-align: center;
+  color: black;
 }
 div.button{
   width: 800px;
@@ -68,6 +69,7 @@ div.data{
 }
 div.quote{
   background-color: aliceblue;
+  color: black;
 }
 p{
   text-align: center;

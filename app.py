@@ -6,6 +6,11 @@ from flask_session import Session
 import plotly.graph_objs as go
 import plotly
 import json
+import requests
+
+IP = "127.0.0.1"
+PORT = 8081
+SERVICE_URL = "http://%s:%d" % (IP, PORT)
 
 app = Flask(__name__)
 sess = Session()
@@ -30,8 +35,35 @@ def index():
 def quote():
     company = session.get('stock_name', None)
     quote = yf.Ticker(str(company))
-    team = (quote.info["dayHigh"], quote.info["dayLow"])
+
     upperCompany = company.upper()
+
+    #Microservice interaction
+    
+    response_store = requests.post(SERVICE_URL + "/store_data", json={
+    "image_name": "TSLA",
+    "image_path": "https://www.carshowroom.com.au/media/21484061/2020-tesla-roadster-01.jpg"
+    })
+    response_store_json = response_store.json()
+    response_store_success = response_store_json["success"]
+
+    if response_store_success:
+        print("Successfully added a new image to the image service!")
+    else:
+        print("Problem storing a new image to the image service! error message is: \n    \"" + response_store_json["error_message"] + "\"")
+    
+
+
+    # GET an image path from the image service
+    response_get = requests.get(SERVICE_URL + "/get_data", json={
+        "image_name": upperCompany,
+    })
+    response_get_json = response_get.json()
+    fetched_image_path = response_get_json["image_path"]
+    print("fetched image path:", fetched_image_path)
+
+    
+    print("\n-----------------------------------------")
     data = yf.download(tickers=upperCompany, period = '5d', interval = '15m', rounding= True)
     fig = go.Figure()
     fig.add_trace(go.Candlestick(x=data.index,open = data['Open'], high=data['High'], low=data['Low'], close=data['Close'], name = 'market data'))
@@ -51,7 +83,7 @@ def quote():
 
 
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('quote.html',graphJSON=graphJSON)
+    return render_template('quote.html',graphJSON=graphJSON, value = fetched_image_path)
 
 
 @app.route("/about")

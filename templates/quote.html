@@ -7,13 +7,14 @@
 {% block body %}
 <div class="quote">
 <div class="button">
-    <button onclick="myFunction()" class="image">Click to get Company Wikipedia Link(For Teammates Service)</button>
+    <button onclick="myFunction()" class="image">Click to get Company Stored Image Link(For Teammates Service)</button>
 </div>
 
 
 <div id="myDIV" style="display:none" class="image">
-    <img src="/static/applelogo.png" style="width:50px;height:60px;">
-
+    <!-- <img src="/static/applelogo.png" style="width:50px;height:60px;"> -->
+    
+    <p>Image link: {{ value }}</p>
 </div>
 
 <div id='chart' class='chart'”></div>
